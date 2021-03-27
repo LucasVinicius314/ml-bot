@@ -11,6 +11,18 @@ const commands: { name: string; description: string }[] = [
 		name: 'parse',
 		description: 'Parses data into a file.',
 	},
+	{
+		name: 'compile',
+		description: 'Compile the model.',
+	},
+	{
+		name: 'fit',
+		description: 'Train the model.',
+	},
+	{
+		name: 'predict',
+		description: 'Make predictions from the model.',
+	},
 ]
 
 const help: CommandHandler = (
