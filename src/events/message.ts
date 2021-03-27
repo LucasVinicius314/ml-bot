@@ -1,6 +1,5 @@
 import * as colors from 'colors'
-
-import { compile, fit, load, model, predict, stop } from '../models/groups'
+import * as model from '../models/groups'
 
 import { Message } from 'discord.js'
 import { help } from '../commands/help'
@@ -18,32 +17,43 @@ const listener = async (message: Message) => {
 		case 'parse':
 			parse(command, next, statements, message)
 			break
-		case 'compile':
-			compile()
-			message.reply('Model compiled.')
-			break
-		case 'fit':
-			await fit()
+		case 'train':
+			await model.train()
 			message.reply('Model trained.')
 			break
 		case 'predict':
-			const res = predict(JSON.parse(next()))
+			const res = model.predict(JSON.parse(next()))
 			message.reply('Predicted.')
 			message.reply(res.toString())
 			break
 		case 'stop':
-			stop()
+			model.stop()
 			message.reply('Stopped.')
 			break
 		case 'load':
-			load()
+			model.load()
 			message.reply('Loaded.')
 			break
-		case 'a':
-			compile()
-			await fit()
-			predict([1, 2, 3])
+		case 'all':
+			model.load()
+			await model.train()
+			const _res = model.predict([
+				'F',
+				'F',
+				'F',
+				'F',
+				'F',
+				'F',
+				'F',
+				'F',
+				'F',
+				'F',
+				'F',
+				'F',
+				'F',
+			])
 			message.reply('Predicted.')
+			message.reply(_res)
 			break
 		default:
 			message.channel.send('Command not identified.')

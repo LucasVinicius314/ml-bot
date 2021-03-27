@@ -12,16 +12,24 @@ const commands: { name: string; description: string }[] = [
 		description: 'Parses data into a file.',
 	},
 	{
-		name: 'compile',
-		description: 'Compile the model.',
-	},
-	{
-		name: 'fit',
+		name: 'train',
 		description: 'Train the model.',
 	},
 	{
 		name: 'predict',
 		description: 'Make predictions from the model.',
+	},
+	{
+		name: 'stop',
+		description: "Stop the model's training.",
+	},
+	{
+		name: 'all',
+		description: 'Go train and predict using the model.',
+	},
+	{
+		name: 'load',
+		description: 'Load data into the model.',
 	},
 ]
 
